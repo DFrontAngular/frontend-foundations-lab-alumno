@@ -1,4 +1,4 @@
-import { exercises, modules } from './curriculum.mjs';
+import { exercises, getGuideUrl, modules } from './curriculum.mjs';
 
 const storageKey = 'frontend-foundations-progress-v1';
 const elements = {
@@ -9,15 +9,7 @@ const elements = {
   empty: document.querySelector('[data-empty-results]'),
   progress: document.querySelector('[data-progress]'),
   progressCount: document.querySelector('[data-progress-count]'),
-  resetProgress: document.querySelector('[data-reset-progress]'),
-  dialog: document.querySelector('[data-dialog]'),
-  dialogTitle: document.querySelector('[data-dialog-title]'),
-  dialogModule: document.querySelector('[data-dialog-module]'),
-  dialogDescription: document.querySelector('[data-dialog-description]'),
-  dialogObjectives: document.querySelector('[data-dialog-objectives]'),
-  dialogAcceptance: document.querySelector('[data-dialog-acceptance]'),
-  dialogCommand: document.querySelector('[data-dialog-command]'),
-  dialogOpen: document.querySelector('[data-dialog-open]')
+  resetProgress: document.querySelector('[data-reset-progress]')
 };
 
 const state = {
@@ -74,7 +66,6 @@ function createCard(exercise) {
   const fragment = elements.template.content.cloneNode(true);
   const card = fragment.querySelector('.exercise-card');
   const checkbox = fragment.querySelector('[data-complete]');
-  const detailsButton = fragment.querySelector('[data-details]');
   const openLink = fragment.querySelector('[data-open]');
   const completed = Boolean(state.progress[exercise.id]);
 
@@ -83,12 +74,11 @@ function createCard(exercise) {
   card.querySelector('.exercise-badge').textContent = exercise.difficulty;
   card.querySelector('.exercise-module').textContent = moduleLabel(exercise.module);
   card.querySelector('.exercise-title').textContent = exercise.title;
-  card.querySelector('.exercise-description').textContent = exercise.description;
   card.querySelector('[data-duration]').textContent = exercise.duration;
   card.querySelector('[data-format]').textContent = exercise.format;
   checkbox.checked = completed;
   checkbox.setAttribute('aria-label', `Marcar ${exercise.title} como completado`);
-  openLink.href = exercise.starterUrl;
+  openLink.href = getGuideUrl(exercise);
 
   checkbox.addEventListener('change', () => {
     state.progress[exercise.id] = checkbox.checked;
@@ -97,28 +87,7 @@ function createCard(exercise) {
     render();
   });
 
-  detailsButton.addEventListener('click', () => openDialog(exercise));
   return fragment;
-}
-
-function fillList(element, items) {
-  element.replaceChildren(...items.map((item) => {
-    const listItem = document.createElement('li');
-    listItem.textContent = item;
-    return listItem;
-  }));
-}
-
-function openDialog(exercise) {
-  elements.dialogTitle.textContent = exercise.title;
-  elements.dialogModule.textContent = `${moduleLabel(exercise.module)} · ${exercise.duration}`;
-  elements.dialogDescription.textContent = exercise.description;
-  fillList(elements.dialogObjectives, exercise.objectives);
-  fillList(elements.dialogAcceptance, exercise.acceptance);
-  elements.dialogOpen.href = exercise.starterUrl;
-  elements.dialogCommand.hidden = !exercise.testCommand;
-  elements.dialogCommand.textContent = exercise.testCommand ? `Tests: ${exercise.testCommand}` : '';
-  elements.dialog.showModal();
 }
 
 function render() {
@@ -150,14 +119,6 @@ elements.resetProgress.addEventListener('click', () => {
   state.progress = {};
   saveProgress();
   render();
-});
-
-for (const closeButton of document.querySelectorAll('[data-close-dialog]')) {
-  closeButton.addEventListener('click', () => elements.dialog.close());
-}
-
-elements.dialog.addEventListener('click', (event) => {
-  if (event.target === elements.dialog) elements.dialog.close();
 });
 
 render();

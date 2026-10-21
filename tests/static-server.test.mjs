@@ -27,6 +27,12 @@ test('sirve los starters', async () => {
   assert.equal(starter.status, 200);
 });
 
+test('sirve la guia de ejercicios antes del starter', async () => {
+  const guide = await fetch(`${baseUrl}/exercise/?id=01-html-semantic-page`);
+  assert.equal(guide.status, 200);
+  assert.match(await guide.text(), /Instrucciones guiadas/);
+});
+
 test('no permite traversal', async () => {
   const response = await fetch(`${baseUrl}/..%2F..%2Fetc%2Fpasswd`);
   assert.ok([403, 404].includes(response.status));

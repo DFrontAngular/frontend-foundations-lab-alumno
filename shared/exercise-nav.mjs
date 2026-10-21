@@ -25,12 +25,14 @@ navigation.innerHTML = `
     </div>
     <div>
       <a class="button button--secondary" href="/">Volver al itinerario</a>
+      <a class="button button--secondary" data-instructions href="/exercise/">Ver instrucciones</a>
       <button class="button" type="button" data-complete>Marcar completado</button>
     </div>
   </div>
 `;
 
 navigation.querySelector('strong').textContent = exerciseTitle;
+navigation.querySelector('[data-instructions]').href = `/exercise/?id=${encodeURIComponent(exerciseId ?? '')}`;
 const completeButton = navigation.querySelector('[data-complete]');
 
 function updateCompleteButton() {

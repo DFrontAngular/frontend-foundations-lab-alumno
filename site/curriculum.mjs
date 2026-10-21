@@ -300,3 +300,13 @@ export const exercises = [
     starterUrl: '/capstone/starter/'
   }
 ];
+
+export function getGuideUrl(exercise) {
+  return `/exercise/?id=${encodeURIComponent(exercise.id)}`;
+}
+
+export function getReadmeUrl(exercise) {
+  return exercise.module === 'capstone'
+    ? '/capstone/README.md'
+    : `/exercises/${exercise.id}/README.md`;
+}

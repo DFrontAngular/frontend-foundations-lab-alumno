@@ -38,8 +38,9 @@
           <h2 id="start-title">Trabaja por bloques y comprueba tus decisiones</h2>
           <p>
             Empieza por la prueba diagnóstica cuando no conozcas el nivel de la persona. Después ejecuta
-            <code>npm run dev</code>, abre cada starter y utiliza DevTools. Los ejercicios con tests indican
-            su comando en la ficha. El proyecto final sirve como puerta de entrada a Angular.
+            <code>npm run dev</code>, lee las instrucciones de cada ejercicio antes de abrir su entorno de
+            trabajo. Los ejercicios con tests indican su comando en la guia. El proyecto final sirve como
+            puerta de entrada a Angular.
           </p>
           <p class="start-panel__actions">
             <a class="button" href="/diagnostic/starter/">Abrir diagnóstico</a>
@@ -95,32 +96,6 @@
       </div>
     </footer>
 
-    <dialog class="exercise-dialog" data-dialog aria-labelledby="dialog-title">
-      <div class="exercise-dialog__header">
-        <div>
-          <p class="section-kicker" data-dialog-module></p>
-          <h2 id="dialog-title" data-dialog-title></h2>
-        </div>
-        <button class="icon-button" type="button" aria-label="Cerrar" data-close-dialog>×</button>
-      </div>
-      <p data-dialog-description></p>
-      <div class="dialog-columns">
-        <section>
-          <h3>Objetivos</h3>
-          <ul data-dialog-objectives></ul>
-        </section>
-        <section>
-          <h3>Criterios clave</h3>
-          <ul data-dialog-acceptance></ul>
-        </section>
-      </div>
-      <p class="command" data-dialog-command hidden></p>
-      <div class="exercise-dialog__actions">
-        <button class="button button--secondary" type="button" data-close-dialog>Volver</button>
-        <a class="button" data-dialog-open href="/">Abrir starter</a>
-      </div>
-    </dialog>
-
     <template id="exercise-card-template">
       <article class="exercise-card card">
         <div class="exercise-card__topline">
@@ -130,7 +105,6 @@
         <div>
           <p class="exercise-module"></p>
           <h3 class="exercise-title"></h3>
-          <p class="exercise-description"></p>
         </div>
         <dl class="exercise-meta">
           <div><dt>Tiempo</dt><dd data-duration></dd></div>
@@ -141,8 +115,7 @@
             <input type="checkbox" data-complete>
             <span>Completado</span>
           </label>
-          <button class="button button--secondary" type="button" data-details>Ver detalle</button>
-          <a class="button" data-open href="/">Abrir</a>
+          <a class="button" data-open href="/">Ver instrucciones</a>
         </div>
       </article>
     </template>
