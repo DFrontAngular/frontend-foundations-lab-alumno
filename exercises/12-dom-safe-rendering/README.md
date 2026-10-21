@@ -33,3 +33,13 @@
 ## Comprobacion manual
 
 Utiliza DevTools para inspeccionar el DOM final, los listeners y el estado de la URL o almacenamiento cuando aplique.
+
+## Autocorreccion
+
+Desde la raiz del repositorio, ejecuta despues de cada cambio:
+
+```bash
+npm run test:exercise -- 12
+```
+
+`ok` indica que el criterio pasa; `not ok` señala el comportamiento que debes revisar.

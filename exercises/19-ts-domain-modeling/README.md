@@ -30,6 +30,8 @@
 npm run typecheck:exercise -- 19
 ```
 
+Para comprobar los tres ejercicios TypeScript a la vez, usa `npm run typecheck:all` desde la raiz.
+
 El starter contiene pruebas de tipos con `@ts-expect-error`. Al principio pueden fallar porque un tipo aun acepta estados que deberia rechazar.
 
 ## Pistas

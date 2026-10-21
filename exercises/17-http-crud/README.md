@@ -42,3 +42,13 @@
 - `PATCH /api/products/:id`
 - `DELETE /api/products/:id`
 - `POST /api/upload`
+
+## Autocorreccion
+
+Desde la raiz del repositorio, ejecuta despues de cada cambio:
+
+```bash
+npm run test:exercise -- 17
+```
+
+`ok` indica que el criterio pasa; `not ok` señala el comportamiento que debes revisar.
