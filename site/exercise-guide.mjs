@@ -97,6 +97,25 @@ async function render() {
   const title = element('h1', `${exercise.number} · ${exercise.title}`);
   hero.append(eyebrow, title);
 
+  const permissions = document.createElement('aside');
+  permissions.className = 'permissions card';
+  permissions.setAttribute('aria-labelledby', 'permissions-title');
+  const permissionsTitle = element('h2', 'Qué tienes permiso para modificar');
+  permissionsTitle.id = 'permissions-title';
+  permissions.append(
+    permissionsTitle,
+    element('p', 'Puedes editar cualquier archivo dentro de la carpeta starter de este ejercicio: HTML, CSS y JavaScript.'),
+    element('p', 'No modifiques el README, los tests, la carpeta shared ni archivos que estén fuera de starter, salvo que el enunciado te lo pida expresamente.')
+  );
+  if (exercise.recommendedFiles?.length) {
+    const recommendation = element('p', 'Para empezar, revisa: ');
+    exercise.recommendedFiles.forEach((file, index) => {
+      if (index > 0) recommendation.append(document.createTextNode(', '));
+      recommendation.append(element('code', file));
+    });
+    permissions.append(recommendation);
+  }
+
   const steps = document.createElement('section');
   steps.className = 'next-steps card';
   steps.setAttribute('aria-labelledby', 'start-steps-title');
@@ -119,7 +138,7 @@ async function render() {
   content.className = 'guide-content card';
   content.setAttribute('aria-label', 'Enunciado completo');
   content.append(element('p', 'Enunciado completo'), element('p', 'Cargando las instrucciones…'));
-  guide.replaceChildren(hero, steps, content);
+  guide.replaceChildren(hero, permissions, steps, content);
 
   try {
     const response = await fetch(getReadmeUrl(exercise));

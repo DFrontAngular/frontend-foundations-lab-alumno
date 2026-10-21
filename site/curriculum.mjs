@@ -46,6 +46,7 @@ export const exercises = [
     description: 'Representa datos tabulares con caption, cabeceras, scope y una estructura navegable.',
     objectives: ['Tablas de datos', 'Skip link', 'Estados comprensibles', 'Orden del documento'],
     acceptance: ['La tabla tiene caption', 'Las cabeceras usan th y scope', 'Existe un skip link funcional'],
+    recommendedFiles: ['starter/index.html', 'starter/styles.css'],
     starterUrl: '/exercises/03-html-table-navigation/starter/'
   },
   {

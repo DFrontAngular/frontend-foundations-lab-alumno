@@ -34,6 +34,19 @@
   background: color-mix(in srgb, var(--color-primary) 6%, var(--color-surface));
 }
 
+.permissions {
+  border-inline-start: 0.35rem solid var(--color-success);
+  padding: clamp(1.25rem, 4vw, 2rem);
+}
+
+.permissions h2 {
+  margin-top: 0;
+}
+
+.permissions p:last-child {
+  margin-bottom: 0;
+}
+
 .next-steps > p,
 .guide-content > p:first-child {
   margin-top: 0;
