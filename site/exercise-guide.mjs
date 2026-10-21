@@ -125,11 +125,11 @@ async function render() {
   const orderedSteps = document.createElement('ol');
   for (const text of [
     'Lee la tarea y los criterios de aceptacion de esta pagina.',
-    'Abre el entorno de trabajo solo cuando tengas claro el primer cambio que haras.',
+    'Abre el ejercicio (`index.html`) solo cuando tengas claro el primer cambio que haras.',
     'Haz cambios pequenos, guarda y comprueba el resultado en el navegador.',
     'Cuando termines, revisa la lista de criterios uno a uno.'
   ]) orderedSteps.append(element('li', text));
-  const start = element('a', 'Entendido: abrir el entorno de trabajo');
+  const start = element('a', 'Abrir el ejercicio: index.html');
   start.className = 'button';
   start.href = exercise.starterUrl;
   steps.append(stepsTitle, orderedSteps, start);
