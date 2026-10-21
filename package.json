@@ -13,10 +13,14 @@
     "list": "node scripts/list-exercises.mjs",
     "test": "node --test tests/api.test.mjs tests/repository.test.mjs tests/static-server.test.mjs",
     "test:exercise": "node scripts/test-exercise.mjs",
+    "test:exercises": "node scripts/test-exercises.mjs",
     "verify": "npm run check && npm test",
+    "typecheck": "node scripts/typecheck-all.mjs",
+    "typecheck:all": "node scripts/typecheck-all.mjs",
     "typecheck:exercise": "node scripts/typecheck-exercise.mjs"
   },
   "devDependencies": {
+    "happy-dom": "^21.0.4",
     "typescript": "^5.9.3"
   }
 }
