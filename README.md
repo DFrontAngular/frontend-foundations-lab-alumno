@@ -7,7 +7,7 @@ No pretende enseñar cada rincón del lenguaje. Su objetivo es comprobar que una
 ## Qué incluye
 
 - Una prueba diagnóstica inicial para detectar lagunas antes de asignar el itinerario.
-- 22 retos progresivos: 21 ejercicios y un capstone final, todos con starter y criterios de aceptación.
+- 23 retos progresivos: 22 ejercicios y un capstone final, todos con starter y criterios de aceptación.
 - Una aplicación final sin framework que consume una API CRUD local.
 - Portal navegable con progreso guardado en `localStorage`.
 - API local con paginación, búsqueda, filtros, ordenación, errores simulados y subida `multipart/form-data`.

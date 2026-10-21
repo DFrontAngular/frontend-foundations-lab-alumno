@@ -44,7 +44,7 @@ for (const requiredScript of ['dev', 'check', 'test', 'verify', 'test:exercise',
   if (!packageJson.scripts?.[requiredScript]) errors.push(`Falta script npm: ${requiredScript}`);
 }
 
-if (exercises.length !== 22) errors.push(`Se esperaban 22 ejercicios y hay ${exercises.length}.`);
+if (exercises.length !== 23) errors.push(`Se esperaban 23 ejercicios y hay ${exercises.length}.`);
 
 if (errors.length > 0) {
   console.error('Validacion fallida:\n');

@@ -5,6 +5,7 @@ export const modules = [
   { id: 'browser', label: 'DOM y navegador' },
   { id: 'http', label: 'HTTP y asincronia' },
   { id: 'typescript', label: 'TypeScript' },
+  { id: 'integration', label: 'Integración y mantenimiento' },
   { id: 'capstone', label: 'Proyecto final' }
 ];
 
@@ -299,6 +300,19 @@ export const exercises = [
     objectives: ['Listado remoto', 'CRUD', 'URL y storage', 'Accesibilidad y responsive'],
     acceptance: ['Cumple los mínimos de la rúbrica', 'Se defiende en revisión', 'No depende de código copiado'],
     starterUrl: '/capstone/starter/'
+  },
+  {
+    id: '23-repository-integration',
+    number: '23',
+    module: 'integration',
+    title: 'Integrar un ejercicio en un repositorio existente',
+    duration: '90-120 min',
+    difficulty: 'Avanzado',
+    format: 'Editor + terminal',
+    description: 'Incorpora un nuevo ejercicio en un código existente respetando su estructura, convenciones y validaciones.',
+    objectives: ['Exploración de código', 'Convenciones del repositorio', 'Cambios acotados', 'Validación global'],
+    acceptance: ['El ejercicio aparece en el catálogo', 'La ficha y el starter son navegables', 'La estructura respeta las convenciones existentes', 'La validación del repositorio pasa'],
+    starterUrl: '/exercises/23-repository-integration/starter/'
   }
 ];
 

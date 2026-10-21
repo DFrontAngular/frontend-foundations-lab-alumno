@@ -7,10 +7,10 @@ import { exercises } from '../site/curriculum.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-test('el curriculum contiene 21 ejercicios y un capstone', () => {
-  assert.equal(exercises.length, 22);
+test('el curriculum contiene 22 ejercicios y un capstone', () => {
+  assert.equal(exercises.length, 23);
   assert.equal(exercises.filter((item) => item.module === 'capstone').length, 1);
-  assert.equal(new Set(exercises.map((item) => item.id)).size, 22);
+  assert.equal(new Set(exercises.map((item) => item.id)).size, 23);
 });
 
 test('cada entrada tiene starter', async () => {
@@ -31,6 +31,6 @@ test('el README documenta el arranque y el criterio de Angular', async () => {
   const readme = await readFile(path.join(root, 'README.md'), 'utf8');
   assert.match(readme, /npm run dev/);
   assert.match(readme, /Criterio de paso a Angular/);
-  assert.match(readme, /22 retos/);
+  assert.match(readme, /23 retos/);
   assert.match(readme, /prueba diagnóstica/i);
 });
