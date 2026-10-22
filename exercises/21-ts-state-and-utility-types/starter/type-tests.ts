@@ -14,6 +14,11 @@ const success: LoadState<number> = { status: 'success', data: 2 };
 const mapped = mapState(success, (value) => String(value));
 stateLabel(mapped);
 
+const idle: LoadState<number> = { status: 'idle' };
+const loading: LoadState<number> = { status: 'loading' };
+stateLabel(idle);
+stateLabel(loading);
+
 // @ts-expect-error Loading no puede contener data.
 const impossible: LoadState<number> = { status: 'loading', data: 2 };
 void impossible;
@@ -21,3 +26,7 @@ void impossible;
 // @ts-expect-error Error necesita un mensaje.
 const incompleteError: LoadState<number> = { status: 'error' };
 void incompleteError;
+
+// @ts-expect-error Success necesita data.
+const incompleteSuccess: LoadState<number> = { status: 'success' };
+void incompleteSuccess;

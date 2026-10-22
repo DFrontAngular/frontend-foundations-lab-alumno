@@ -7,8 +7,8 @@ export interface Product {
 }
 
 export const parseProduct: Parser<Product> = (value) => {
-  // TODO
-  return value as Product;
+  // TODO: valida id, name y price sin hacer casts ciegos.
+  throw new Error('Parser de producto no implementado.');
 };
 
 export function getProducts(fetcher: typeof fetch = fetch): Promise<Page<Product>> {

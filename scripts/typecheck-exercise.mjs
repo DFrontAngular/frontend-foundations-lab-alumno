@@ -27,15 +27,8 @@ try {
   process.exit(1);
 }
 
-const localExecutable = path.join(root, 'node_modules', '.bin', process.platform === 'win32' ? 'tsc.cmd' : 'tsc');
-let executable = localExecutable;
-try {
-  await access(localExecutable);
-} catch {
-  executable = process.platform === 'win32' ? 'tsc.cmd' : 'tsc';
-}
-
-const child = spawn(executable, ['--project', projectFile], {
+const typeScriptExecutable = path.join(root, 'node_modules', 'typescript', 'bin', 'tsc');
+const child = spawn(process.execPath, [typeScriptExecutable, '--project', projectFile], {
   cwd: root,
   stdio: 'inherit'
 });
