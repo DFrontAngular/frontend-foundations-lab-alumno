@@ -26,5 +26,6 @@ test('findProductOrThrow devuelve el producto o lanza not found', () => {
 
 test('toUserMessage traduce errores conocidos sin filtrar detalles', () => {
   assert.equal(toUserMessage(new DomainError('PRODUCT_NOT_FOUND', 'interno', { details: { sql: 'secret' } })), 'No encontramos ese producto.');
+  assert.equal(toUserMessage(new DomainError('INVALID_PRODUCT', 'interno')), 'Los datos del producto no son válidos.');
   assert.equal(toUserMessage(new Error('secret')), 'No se pudo completar la operacion. Intentalo de nuevo.');
 });

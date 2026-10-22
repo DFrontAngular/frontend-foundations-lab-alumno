@@ -24,6 +24,6 @@ form.addEventListener('submit', (event) => {
     console.error(error);
     status.dataset.kind = 'error';
     status.textContent = toUserMessage(error);
-    output.textContent = error instanceof Error ? `${error.name}: ${error.message}` : String(error);
+    output.textContent = '';
   }
 });

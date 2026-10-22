@@ -20,6 +20,10 @@ test('valida un borrador por campo', () => {
   });
 });
 
+test('acepta un borrador valido sin errores', () => {
+  assert.deepEqual(sut.validateProductDraft({ name: 'Monitor', price: 0, stock: 0 }), {});
+});
+
 test('comprueba cantidad y stock', () => {
   const product = { stock: 3 };
   assert.equal(sut.canSell(product, 3), true);
@@ -37,4 +41,8 @@ test('aplica movimientos sin mutar y bloquea stock negativo', () => {
     assert.equal(error.details.currentStock, 3);
     return true;
   });
+});
+
+test('rechaza una cantidad de movimiento que no sea un entero', () => {
+  assert.throws(() => sut.applyStockMovement({ stock: 3 }, 1.5), RangeError);
 });

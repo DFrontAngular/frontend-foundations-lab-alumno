@@ -1,4 +1,4 @@
-import { applyStockMovement, calculateFinalPrice, canSell } from './domain.mjs';
+import { applyStockMovement, calculateFinalPrice, canSell, validateProductDraft } from './domain.mjs';
 
 const form = document.querySelector('[data-form]');
 const status = document.querySelector('[data-status]');
@@ -7,8 +7,24 @@ const output = document.querySelector('[data-output]');
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   const data = new FormData(form);
-  const values = Object.fromEntries([...data.entries()].map(([key, value]) => [key, Number(value)]));
-  const product = Object.freeze({ id: 'demo', name: 'Producto demo', stock: values.stock });
+  const values = {
+    name: String(data.get('name') ?? ''),
+    price: Number(data.get('price')),
+    discountPercent: Number(data.get('discountPercent')),
+    taxPercent: Number(data.get('taxPercent')),
+    stock: Number(data.get('stock')),
+    quantity: Number(data.get('quantity'))
+  };
+  const validationErrors = validateProductDraft(values);
+
+  if (Object.keys(validationErrors).length > 0) {
+    status.dataset.kind = 'error';
+    status.textContent = 'Revisa los datos del producto.';
+    output.textContent = JSON.stringify({ validationErrors }, null, 2);
+    return;
+  }
+
+  const product = Object.freeze({ id: 'demo', name: values.name, stock: values.stock });
 
   try {
     const allowed = canSell(product, values.quantity);

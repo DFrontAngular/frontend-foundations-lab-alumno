@@ -39,3 +39,15 @@ test('resume unidades y valor del inventario', () => {
     totalValue: 840
   });
 });
+
+test('la busqueda vacia conserva todos los productos y la agrupacion crea arrays nuevos', () => {
+  const result = sut.filterProducts(products, '   ');
+  const groups = sut.groupProductsByCategory(products);
+  assert.notEqual(result, products);
+  assert.equal(result.length, products.length);
+  assert.notEqual(groups['Periféricos'], products);
+});
+
+test('rechaza un criterio de ordenacion desconocido', () => {
+  assert.throws(() => sut.sortProducts(products, 'unknown'), RangeError);
+});

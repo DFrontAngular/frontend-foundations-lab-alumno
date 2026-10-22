@@ -44,6 +44,16 @@ test('retry puede decidir no reintentar', async () => {
   assert.equal(calls, 1);
 });
 
+test('retry no reintenta una cancelacion', async () => {
+  let calls = 0;
+  const abortError = new DOMException('Abortado', 'AbortError');
+  await assert.rejects(sut.retry(async () => {
+    calls += 1;
+    throw abortError;
+  }, { retries: 3 }), (error) => error === abortError);
+  assert.equal(calls, 1);
+});
+
 test('loadDashboard arranca loaders concurrentemente y conserva parciales', async () => {
   const starts = [];
   let release;
